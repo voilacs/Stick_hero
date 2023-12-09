@@ -166,4 +166,63 @@ public class StickmanGame extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
     }
+    void startGameLoop() {
+        scene.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.SPACE && !stickSpawned && !growingInProgress) {
+                GrowS();
+                stickSpawned = true;
+                growingInProgress = false;
+            }
+        });
+
+        scene.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.SPACE && !growingInProgress) {
+                growingInProgress=true;
+                stopGrowS(platform);
+            }
+            startGameLoop();
+        });
+
+    }
+    void createStickman() {
+        stickman = StickmanController.getInstance(root);
+        stickman.initialize();
+    }
+
+    void createPlatform() {
+        if (platform==null){
+            platform = new PlatformController(root);
+            platform.initialize();
+            platform_distance = platform.getDistance();
+        }
+        else{
+            platform.initialize();
+            platform_distance = platform.getDistance();
+        }
+    }
+
+    private void GrowS() {
+        stickman.initializeStick();
+        growingTimeline = new Timeline(
+                new KeyFrame(Duration.millis(10), e -> growStick())
+        );
+        growingTimeline.setCycleCount(Animation.INDEFINITE);
+        growingTimeline.play();
+    }
+
+    private void growStick() {
+        stickman.grow();
+    }
+
+    private void stopGrowS(PlatformController platform) {
+        growingTimeline.pause();
+        stickman.stopGrowing(platform, this);
+        stickman.startWalking(platform, this);
+        isWalking = true;
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
   
