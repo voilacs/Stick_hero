@@ -1,5 +1,4 @@
 # ap_game_2022081_2022160
-# ap_game_2022081_2022160
 An Implementation of key java concepts with a stick hero game
 
 Contributions:
@@ -20,3 +19,5 @@ A stickman can only be one other instances of it called in various scenes are on
 Thus a stickman can be implemented using "SINGLETON" design pattern.
 
 Scores are updated in each passing of a stick and cherries are also incremented at each collection of cherry.
+
+Private github link: https://github.com/voilacs/ap_game_2022081_2022160/
