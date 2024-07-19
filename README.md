@@ -12,8 +12,6 @@ How to play the game?
 4) On a failure the player falls by itself and the menu appears to revive the player with cherries or turn back to the main menu.
 
 Description:
-
-Description
 Three classes PlatformController, StickmanGame and StickmanController are used to divide the implementation of the game into three distinguished categories.
 A stickman can only be one other instances of it called in various scenes are only initialized instances of it is called.
 Thus a stickman can be implemented using "SINGLETON" design pattern.
