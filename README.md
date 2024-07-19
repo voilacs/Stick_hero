@@ -1,4 +1,4 @@
-# ap_game_2022081_2022160
+# Stick_Hero Game
 An Implementation of key java concepts with a stick hero game
 
 Contributions:
